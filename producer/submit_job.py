@@ -23,7 +23,7 @@ def submit_job(job_type, payload):
 
 if __name__ == "__main__":
     payload = { 'message': 'hello from Ben' }
-    submit_job('test_job_type', payload)
+    submit_job('print_message', payload)
 
 # job_queue: [job1, job2, job3]
 
