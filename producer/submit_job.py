@@ -13,12 +13,12 @@ def submit_job(job_type, payload):
         'id': str(uuid.uuid4()),
         'type': job_type,           # 'test_job_name'
         'payload': payload,         # 'message': 'hello from Ben'
-        'status': 'pending',        # 'pending', 'processing', 'completed', 'failed'
+        'status': 'pending',        # 'pending', 'completed', 'failed'
         'created_at': time()        # timestamp in seconds
     }
     # push the job to the queue (list)
+    r.hset("job_status", job["id"], "pending")
     r.rpush('job_queue', json.dumps(job))
-    print(json.dumps(job))
     print(f"Job {job['id']} submitted successfully")
 
 if __name__ == "__main__":
